@@ -1,5 +1,3 @@
-const { client } = require('./index');
-
 const {
   client,
   getAllUsers
@@ -32,3 +30,39 @@ async function testDB() {
   
 }
 testDB();
+
+async function dropTables() {
+  try {
+    await client.query(`
+
+    `);
+  } catch (error) {
+    throw error; // we pass the error up to the function that calls dropTables
+  }
+}
+
+// this function should call a query which creates all tables for our database 
+async function createTables() {
+  try {
+    await client.query(`
+
+    `);
+  } catch (error) {
+    throw error; // we pass the error up to the function that calls createTables
+  }
+}
+
+/*async function rebuildDB() {
+  try {
+    client.connect();
+
+    await dropTables();
+    await createTables();
+  } catch (error) {
+    console.error(error);
+  } finally {
+    client.end();
+  }
+}
+
+rebuildDB();*/
